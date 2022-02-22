@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class RowItem : MonoBehaviour
 {
     public Sprite[] sprites;
-    public string name = "";
+    public string ItemName;
 
     [SerializeField] private SpriteRenderer _spriteRenderer;
     
@@ -18,9 +18,15 @@ public class RowItem : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("destroy"))
+        if (col.gameObject.CompareTag("Destroy"))
         {
             Destroy(gameObject);
+        }
+        
+        if (col.gameObject.CompareTag("ResultCheck"))
+        {
+            ItemName = _spriteRenderer.sprite.ToString();
+            Debug.Log(ItemName);
         }
     }
 }

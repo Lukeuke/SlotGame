@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 58796035}
   m_Layer: 0
   m_Name: ItemsStopPoint
-  m_TagString: Untagged
+  m_TagString: ResultCheck
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,6 +408,9 @@ MonoBehaviour:
   playButton: {fileID: 1729180948}
   playText: {fileID: 1530763714}
   stopObject: {fileID: 58796033}
+  items:
+  - 
+  _Sprite123: {fileID: 21300000, guid: 46ba9ee77c80469439542b19f9ef96c8, type: 3}
 --- !u!1 &933521282
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +850,7 @@ GameObject:
   - component: {fileID: 1405983239}
   m_Layer: 0
   m_Name: DestroyItem
-  m_TagString: destroy
+  m_TagString: Destroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
