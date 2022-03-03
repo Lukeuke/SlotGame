@@ -7,9 +7,10 @@ using Random = UnityEngine.Random;
 public class RowItem : MonoBehaviour
 {
     public Sprite[] sprites;
-    public string ItemName;
 
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    
+    private float _intervalTime = 0.15f;
     
     private void Start()
     {
@@ -22,11 +23,18 @@ public class RowItem : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        if (col.gameObject.CompareTag("ResultCheck"))
+    }
+    
+    private void Update()
+    {
+        transform.Translate(0f, -_intervalTime, 0f, Space.World);
+
+        if (gameObject.transform.position.y <= -4f)
         {
-            ItemName = _spriteRenderer.sprite.ToString();
-            Debug.Log(ItemName);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x,
+                4f, gameObject.transform.position.z);
+            
+            _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         }
     }
 }
