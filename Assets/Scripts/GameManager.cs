@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class GameManager : MonoBehaviour
     public Text playText;
     public GameObject stopObject;
     public GameObject customStopObject;
+    public GameObject itemContainer;
+    public Transform target;
+    
     public List<string> winningItemName = new List<string>()
     {
         "Item 0", "Item 1", "Item 2"
@@ -26,6 +30,7 @@ public class GameManager : MonoBehaviour
     private int _rowsCount = 3;
     private RowItem _rowItem;
     private CustomRowItem _customRowItem;
+    private float speed = 0.1f;
     
     public void OnPlayGame()
     {
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         while (_isPlaying)
         {
+            itemContainer.SetActive(true);
             for (int i = 0; i < rowSpawner.Count; i++)
             {
                 /*Instantiate(rowItem, rowSpawner[i].position, Quaternion.identity);*/
@@ -68,6 +74,8 @@ public class GameManager : MonoBehaviour
     private void OnStopGame()
     {
         _isPlaying = false;
+        /*itemContainer.transform.position =
+            Vector3.MoveTowards(itemContainer.transform.position, target.position, speed);*/
         
         Debug.Log("On stop game");
     }
@@ -122,6 +130,7 @@ public class GameManager : MonoBehaviour
     {
         _isPlaying = false;
         customStopObject.SetActive(false);
+        itemContainer.SetActive(false);
         StopCoroutine(SpawnRowItems());
 
         playButton.gameObject.SetActive(false);
@@ -139,9 +148,11 @@ public class GameManager : MonoBehaviour
         playText.text = "Stop";
         Debug.Log($"{_isPlaying} spawning");
     }
-
+    
     private void Awake()
     {
+        itemContainer.SetActive(false);
+        
         if (Instance == null)
         {
             Instance = this;

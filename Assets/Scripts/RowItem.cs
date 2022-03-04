@@ -9,7 +9,6 @@ public class RowItem : MonoBehaviour
     public Sprite[] sprites;
 
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    
     private float _intervalTime = 0.15f;
     
     private void Start()
