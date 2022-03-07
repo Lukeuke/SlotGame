@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3899095591700322226}
   m_Layer: 0
   m_Name: CustomRowItem
-  m_TagString: Untagged
+  m_TagString: WinSymbol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5162299848825036541
 MonoBehaviour:
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 
+  index: 0
   customSprites:
   - {fileID: 21300000, guid: 46ba9ee77c80469439542b19f9ef96c8, type: 3}
   - {fileID: 21300000, guid: e536e9d58c8b73845a34a9dd5b4e9f8c, type: 3}
@@ -107,7 +108,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0894def90f6fa6f4e88714dccc94a8ca, type: 3}
   - {fileID: 21300000, guid: 9f1fb9c5183872d47a411d586b4ad476, type: 3}
   _spriteRenderer: {fileID: 5162299848825036482}
-  index: 0
+  rb: {fileID: 4298534042800078738}
 --- !u!50 &4298534042800078738
 Rigidbody2D:
   serializedVersion: 4
@@ -122,7 +123,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 30
   m_Material: {fileID: 0}
   m_Interpolate: 1

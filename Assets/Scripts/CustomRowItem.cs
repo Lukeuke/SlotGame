@@ -8,14 +8,14 @@ public class CustomRowItem : MonoBehaviour
     public static CustomRowItem Instance;
     
     public string itemName;
+    public int index;
     public Sprite[] customSprites;
     public SpriteRenderer _spriteRenderer;
-    
-    public int index;
+    public Rigidbody2D rb;
 
     private void Start()
     {
-        GameManager.Instance.GetWinningSprite(_spriteRenderer, customSprites, index);
+        GameManager.Instance.SetCustomSprite();
         GetSpriteName();
     }
 
@@ -31,6 +31,11 @@ public class CustomRowItem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     private string GetSpriteName()

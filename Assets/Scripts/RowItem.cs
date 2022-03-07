@@ -10,7 +10,7 @@ public class RowItem : MonoBehaviour
 
     [SerializeField] private SpriteRenderer _spriteRenderer;
     private float _intervalTime = 0.15f;
-    
+
     private void Start()
     {
         _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
@@ -32,7 +32,7 @@ public class RowItem : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x,
                 4f, gameObject.transform.position.z);
-            
+
             _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         }
     }
