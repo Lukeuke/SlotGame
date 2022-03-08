@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1873791}
   - component: {fileID: 1873792}
   m_Layer: 0
-  m_Name: CustomItem (4)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 57997094}
   - component: {fileID: 57997095}
   m_Layer: 0
-  m_Name: CustomItem (10)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 58796034}
   - component: {fileID: 58796035}
   m_Layer: 9
-  m_Name: CheckForWinningItems
+  m_Name: StopAndCheckItem
   m_TagString: ResultCheck
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 132906380}
   - component: {fileID: 132906379}
   m_Layer: 0
-  m_Name: CustomItem
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 306915227}
   - component: {fileID: 306915228}
   m_Layer: 0
-  m_Name: CustomItem (9)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -858,7 +858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 416642797}
   m_Layer: 0
-  m_Name: Container
+  m_Name: ItemContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 464438719}
   - component: {fileID: 464438720}
   m_Layer: 0
-  m_Name: CustomItem (7)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 526718950}
   - component: {fileID: 526718951}
   m_Layer: 0
-  m_Name: CustomItem (8)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,7 +1484,7 @@ GameObject:
   - component: {fileID: 720066228}
   - component: {fileID: 720066229}
   m_Layer: 0
-  m_Name: CustomItem (11)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1607,7 +1607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 766672740}
   m_Layer: 0
-  m_Name: CustomSpawner
+  m_Name: CustomItemSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1621,7 +1621,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766672739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1571554287}
@@ -1659,7 +1659,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &781207826
 MonoBehaviour:
@@ -1688,16 +1688,6 @@ MonoBehaviour:
   customStopObject: {fileID: 1917469014}
   itemContainer: {fileID: 416642796}
   customItemContainer: {fileID: 1299379424}
-  winningItemName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   customSprites:
   - {fileID: 21300000, guid: 46ba9ee77c80469439542b19f9ef96c8, type: 3}
   - {fileID: 21300000, guid: e536e9d58c8b73845a34a9dd5b4e9f8c, type: 3}
@@ -1706,7 +1696,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1a2cf080daea09a4da866c4b1bf82e75, type: 3}
   - {fileID: 21300000, guid: 0894def90f6fa6f4e88714dccc94a8ca, type: 3}
   - {fileID: 21300000, guid: 9f1fb9c5183872d47a411d586b4ad476, type: 3}
-  _isPlaying: 0
+  isPlaying: 0
 --- !u!1 &879117501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,7 +2195,7 @@ Transform:
   - {fileID: 1509145987}
   - {fileID: 288243681}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317192235
 GameObject:
@@ -2350,7 +2340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1328693805}
   m_Layer: 0
-  m_Name: SlotContainter
+  m_Name: SlotMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2377,7 +2367,7 @@ Transform:
   - {fileID: 1496418723}
   - {fileID: 1627960685}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398021003
 GameObject:
@@ -2443,7 +2433,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405983237
 GameObject:
@@ -2470,7 +2460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405983237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -3.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2597,7 +2587,7 @@ GameObject:
   - component: {fileID: 1481098185}
   - component: {fileID: 1481098186}
   m_Layer: 0
-  m_Name: CustomItem (5)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3017,7 +3007,7 @@ GameObject:
   - component: {fileID: 1537781158}
   - component: {fileID: 1537781159}
   m_Layer: 0
-  m_Name: CustomItem (3)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3307,7 +3297,7 @@ GameObject:
   - component: {fileID: 1600641520}
   - component: {fileID: 1600641521}
   m_Layer: 0
-  m_Name: CustomItem (2)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4180,7 +4170,7 @@ GameObject:
   - component: {fileID: 1823384273}
   - component: {fileID: 1823384274}
   m_Layer: 0
-  m_Name: CustomItem (1)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4514,7 +4504,7 @@ Transform:
   - {fileID: 1271219239}
   - {fileID: 1610585108}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1974041813
 GameObject:
@@ -4611,7 +4601,7 @@ GameObject:
   - component: {fileID: 2005386753}
   - component: {fileID: 2005386754}
   m_Layer: 0
-  m_Name: CustomItem (6)
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4817,7 +4807,7 @@ RectTransform:
   m_Children:
   - {fileID: 1729180947}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

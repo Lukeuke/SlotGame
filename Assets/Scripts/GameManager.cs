@@ -18,9 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject customStopObject;
     public GameObject itemContainer;
     public GameObject customItemContainer;
-    public List<string> winningItemName = new List<string>();
     public Sprite[] customSprites;
-    public bool _isPlaying;
+    public bool isPlaying;
     
     private float _spawnInterval = 0.1f;
     private RowItem _rowItem;
@@ -29,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayGame()
     {
-        if (_isPlaying)
+        if (isPlaying)
         {
             StartCoroutine(StopPlaying());
             OnStopGame();
@@ -44,10 +43,9 @@ public class GameManager : MonoBehaviour
     
     private IEnumerator SpawnRowItems()
     {
-        Debug.Log("Coroutine started");
-        _isPlaying = true;
+        isPlaying = true;
 
-        while (_isPlaying)
+        while (isPlaying)
         {
             itemContainer.SetActive(true);
             yield return new WaitForSeconds(_spawnInterval);
@@ -56,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void OnStopGame()
     {
-        _isPlaying = false;
+        isPlaying = false;
         stopObject.SetActive(true);
         customItemContainer.transform.position = new Vector3(customItemContainer.transform.position.x, -2f,
             customItemContainer.transform.position.z);
@@ -79,7 +77,6 @@ public class GameManager : MonoBehaviour
                     customRowSpawner[i].position.z);
                 var spawnedItem = Instantiate(customRowItem, vectorForItem, Quaternion.identity);
                 spawnedItem.name = $"Item {i} {j}";
-                winningItemName[i] = spawnedItem.name;
             }
         }
     }
@@ -126,7 +123,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator StopPlaying()
     {
-        _isPlaying = false;
+        isPlaying = false;
         customStopObject.SetActive(false);
         yield return new WaitForSeconds(0.22f); // Custom Items Delay
         itemContainer.SetActive(false);
@@ -136,12 +133,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ButtonWait());
             
         playText.text = "Play";
-        Debug.Log($"{_isPlaying} stopped");
+        Debug.Log($"{isPlaying} stopped");
     }
 
     private IEnumerator StartPlaying()
     {
-        if (_isPlaying)
+        if (isPlaying)
         {
             itemContainer.transform.position = new Vector3(gameObject.transform.position.x,
                 0f, gameObject.transform.position.z);
@@ -150,9 +147,9 @@ public class GameManager : MonoBehaviour
         customStopObject.SetActive(true);
         yield return new WaitForSeconds(0.1f); // Custom Items Delay
         StartCoroutine(SpawnRowItems());
-        _isPlaying = true;
+        isPlaying = true;
         playText.text = "Stop";
-        Debug.Log($"{_isPlaying} spawning");
+        Debug.Log($"{isPlaying} spawning");
     }
 
     private void Awake()
