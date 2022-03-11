@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     private CustomRowItem _customRowItem;
     private GameObject[] itemObject;
 
+    [SerializeField] private TextAsset _winningItemJson;
+
+    [SerializeField] private WinningItemDto _winningItemDto = new WinningItemDto();
+
     public void OnPlayGame()
     {
         if (isPlaying)
@@ -37,10 +41,16 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(StartPlaying());
             OnStartGame();
-            SpawnCustomItems();
+            /*SpawnCustomItems();*/
         }
     }
-    
+
+    private void Start()
+    {
+        isPlaying = false;
+        SpawnCustomItems();
+    }
+
     private IEnumerator SpawnRowItems()
     {
         isPlaying = true;
@@ -81,37 +91,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckForWin()
-    {
-        
-    }
-
     public void SetCustomSprite()
     {
         itemObject = GameObject.FindGameObjectsWithTag("WinSymbol");
+        // var getWinningItem = JsonUtility.FromJson<WinningItemDto>(_winningItemJson.text);
         
         foreach (GameObject go in itemObject)
         {
             SpriteRenderer spriteRenderer = go.GetComponent<SpriteRenderer>();
             
             if (go.name == "Item 0 0") 
-                spriteRenderer.sprite = customSprites[1];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[0]];
             else if (go.name == "Item 0 1")
-                spriteRenderer.sprite = customSprites[2];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[1]];
             else if(go.name == "Item 0 2")
-                spriteRenderer.sprite = customSprites[3];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[2]];
             else if(go.name == "Item 1 0")
-                spriteRenderer.sprite = customSprites[3];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[3]];
             else if(go.name == "Item 1 1")
-                spriteRenderer.sprite = customSprites[5];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[4]];
             else if(go.name == "Item 1 2")
-                spriteRenderer.sprite = customSprites[6];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[5]];
             else if(go.name == "Item 2 0")
-                spriteRenderer.sprite = customSprites[2];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[6]];
             else if(go.name == "Item 2 1")
-                spriteRenderer.sprite = customSprites[4];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[7]];
             else if(go.name == "Item 2 2")
-                spriteRenderer.sprite = customSprites[3];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[8]];
+        }
+    }
+    
+    public void CheckForWin()
+    {
+        itemObject = GameObject.FindGameObjectsWithTag("WinSymbol");
+        
+        foreach (GameObject go in itemObject)
+        {
+            SpriteRenderer spriteRenderer = go.GetComponent<SpriteRenderer>();
+
+            if (go.name == "Item 0 0" && spriteRenderer.sprite == customSprites[1])
+            {
+                print("win");
+            }
         }
     }
     
@@ -125,7 +146,7 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = false;
         customStopObject.SetActive(false);
-        yield return new WaitForSeconds(0.22f); // Custom Items Delay
+        yield return new WaitForSeconds(0.22f); // deafult 0.22f
         itemContainer.SetActive(false);
         StopCoroutine(SpawnRowItems());
 
@@ -145,7 +166,7 @@ public class GameManager : MonoBehaviour
         }
         
         customStopObject.SetActive(true);
-        yield return new WaitForSeconds(0.1f); // Custom Items Delay
+        yield return new WaitForSeconds(0.1f); // deafult 0.1f
         StartCoroutine(SpawnRowItems());
         isPlaying = true;
         playText.text = "Stop";
@@ -155,7 +176,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         itemContainer.SetActive(false);
-        
+
         if (Instance == null)
         {
             Instance = this;

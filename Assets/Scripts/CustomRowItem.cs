@@ -8,11 +8,8 @@ public class CustomRowItem : MonoBehaviour
     public static CustomRowItem Instance;
     
     public string itemName;
-    public int index;
     public Sprite[] customSprites;
     public SpriteRenderer _spriteRenderer;
-    public Rigidbody2D rb;
-
     private void Start()
     {
         GameManager.Instance.SetCustomSprite();
@@ -29,15 +26,11 @@ public class CustomRowItem : MonoBehaviour
 
         if (col.gameObject.CompareTag("Destroy"))
         {
-            Destroy(gameObject);
+            GameManager.Instance.customStopObject.SetActive(true);
+            gameObject.transform.position = new Vector3(transform.position.x, 9f, transform.position.z);
         }
     }
-
-    private void Update()
-    {
-        
-    }
-
+    
     private string GetSpriteName()
     {
         Sprite sprite = _spriteRenderer.sprite;

@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 
-  index: 0
   customSprites:
   - {fileID: 21300000, guid: 46ba9ee77c80469439542b19f9ef96c8, type: 3}
   - {fileID: 21300000, guid: e536e9d58c8b73845a34a9dd5b4e9f8c, type: 3}
@@ -108,7 +107,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0894def90f6fa6f4e88714dccc94a8ca, type: 3}
   - {fileID: 21300000, guid: 9f1fb9c5183872d47a411d586b4ad476, type: 3}
   _spriteRenderer: {fileID: 5162299848825036482}
-  rb: {fileID: 4298534042800078738}
 --- !u!50 &4298534042800078738
 Rigidbody2D:
   serializedVersion: 4
