@@ -30,6 +30,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private WinningItemDto _winningItemDto = new WinningItemDto();
 
+    public WinningItemDto GetWinningItemDto()
+    {
+        _winningItemDto = JsonUtility.FromJson<WinningItemDto>(_winningItemJson.text);
+        return _winningItemDto;
+    }
+
     public void OnPlayGame()
     {
         if (isPlaying)
@@ -94,30 +100,29 @@ public class GameManager : MonoBehaviour
     public void SetCustomSprite()
     {
         itemObject = GameObject.FindGameObjectsWithTag("WinSymbol");
-        // var getWinningItem = JsonUtility.FromJson<WinningItemDto>(_winningItemJson.text);
-        
+
         foreach (GameObject go in itemObject)
         {
             SpriteRenderer spriteRenderer = go.GetComponent<SpriteRenderer>();
             
             if (go.name == "Item 0 0") 
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[0]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[0]];
             else if (go.name == "Item 0 1")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[1]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[1]];
             else if(go.name == "Item 0 2")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[2]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[2]];
             else if(go.name == "Item 1 0")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[3]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[3]];
             else if(go.name == "Item 1 1")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[4]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[4]];
             else if(go.name == "Item 1 2")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[5]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[5]];
             else if(go.name == "Item 2 0")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[6]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[6]];
             else if(go.name == "Item 2 1")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[7]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[7]];
             else if(go.name == "Item 2 2")
-                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[8]];
+                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[8]];
         }
     }
     
