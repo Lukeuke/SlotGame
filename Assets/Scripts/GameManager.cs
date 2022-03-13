@@ -17,17 +17,12 @@ public class GameManager : MonoBehaviour
     public GameObject stopObject;
     public GameObject customStopObject;
     public GameObject itemContainer;
-    public GameObject customItemContainer;
     public Sprite[] customSprites;
     public bool isPlaying;
     
-    private float _spawnInterval = 0.1f;
-    private RowItem _rowItem;
-    private CustomRowItem _customRowItem;
     private GameObject[] itemObject;
-
     [SerializeField] private TextAsset _winningItemJson;
-
+    
     [SerializeField] private WinningItemDto _winningItemDto = new WinningItemDto();
 
     public WinningItemDto GetWinningItemDto()
@@ -47,7 +42,6 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(StartPlaying());
             OnStartGame();
-            /*SpawnCustomItems();*/
         }
     }
 
@@ -57,30 +51,15 @@ public class GameManager : MonoBehaviour
         SpawnCustomItems();
     }
 
-    private IEnumerator SpawnRowItems()
-    {
-        isPlaying = true;
-
-        while (isPlaying)
-        {
-            itemContainer.SetActive(true);
-            yield return new WaitForSeconds(_spawnInterval);
-        }
-    }
-
     private void OnStopGame()
     {
         isPlaying = false;
         stopObject.SetActive(true);
-        customItemContainer.transform.position = new Vector3(customItemContainer.transform.position.x, -2f,
-            customItemContainer.transform.position.z);
     }
 
     private void OnStartGame()
     {
         stopObject.SetActive(false);
-        customItemContainer.transform.position = new Vector3(customItemContainer.transform.position.x, 4f,
-            customItemContainer.transform.position.z);
     }
 
     private void SpawnCustomItems()
@@ -106,23 +85,23 @@ public class GameManager : MonoBehaviour
             SpriteRenderer spriteRenderer = go.GetComponent<SpriteRenderer>();
             
             if (go.name == "Item 0 0") 
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[0]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[0]];
             else if (go.name == "Item 0 1")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[1]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[1]];
             else if(go.name == "Item 0 2")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[2]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[2]];
             else if(go.name == "Item 1 0")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[3]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[3]];
             else if(go.name == "Item 1 1")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[4]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[4]];
             else if(go.name == "Item 1 2")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[5]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[5]];
             else if(go.name == "Item 2 0")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[6]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[6]];
             else if(go.name == "Item 2 1")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[7]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[7]];
             else if(go.name == "Item 2 2")
-                spriteRenderer.sprite = customSprites[GetWinningItemDto().dimensions[8]];
+                spriteRenderer.sprite = customSprites[_winningItemDto.dimensions[8]];
         }
     }
     
@@ -151,31 +130,29 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = false;
         customStopObject.SetActive(false);
-        yield return new WaitForSeconds(0.22f); // deafult 0.22f
-        itemContainer.SetActive(false);
-        StopCoroutine(SpawnRowItems());
-
         playButton.gameObject.SetActive(false);
         StartCoroutine(ButtonWait());
-            
+        yield return new WaitForSeconds(0.22f); // deafult 0.22f
+        itemContainer.SetActive(false);
+
         playText.text = "Play";
         Debug.Log($"{isPlaying} stopped");
     }
 
     private IEnumerator StartPlaying()
     {
+        customStopObject.SetActive(true);
         if (isPlaying)
         {
-            itemContainer.transform.position = new Vector3(gameObject.transform.position.x,
-                0f, gameObject.transform.position.z);
+            itemContainer.transform.position = new Vector3(itemContainer.transform.position.x,
+                0f, itemContainer.transform.position.z);
         }
         
-        customStopObject.SetActive(true);
         yield return new WaitForSeconds(0.1f); // deafult 0.1f
-        StartCoroutine(SpawnRowItems());
+        itemContainer.SetActive(true);
         isPlaying = true;
         playText.text = "Stop";
-        Debug.Log($"{isPlaying} spawning");
+        Debug.Log($"{isPlaying} started");
     }
 
     private void Awake()

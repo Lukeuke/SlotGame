@@ -9,7 +9,7 @@ public class RowItem : MonoBehaviour
     public Sprite[] sprites;
 
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    private float _intervalTime = 0.5f; // default: 0.15f
+    private float _intervalTime = 30f; // default (without FixedUpdate and Time.deltaTime): 0.5f
 
     private void Start()
     {
@@ -24,9 +24,9 @@ public class RowItem : MonoBehaviour
         }
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Translate(0f, -_intervalTime, 0f, Space.World);
+        transform.Translate(0f, -_intervalTime * Time.deltaTime, 0f, Space.World);
 
         if (gameObject.transform.position.y <= -4f)
         {

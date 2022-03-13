@@ -26,7 +26,7 @@ public class CustomRowItem : MonoBehaviour
 
         if (col.gameObject.CompareTag("Destroy"))
         {
-            GameManager.Instance.customStopObject.SetActive(true);
+            // GameManager.Instance.customStopObject.SetActive(true);
             gameObject.transform.position = new Vector3(transform.position.x, 9f, transform.position.z);
         }
     }
